@@ -1,0 +1,23 @@
+<%-include('./partials/head.ejs') %>
+<body>
+    <%-include('./partials/nav.ejs') %>
+    <section class="create-section">
+      <form action="/blogs" method="POST">
+        <div>
+          <p>Blog Title</p>
+          <input type="text" name="title" required>
+        </div>
+        <div>
+          <p>Blog Snippet</p>
+          <input type="text" name="snippet" required>
+        </div>
+        <div>
+          <p>Blog Body</p>
+          <textarea name="body" required></textarea>
+        </div>
+        <button>Submit</button>
+      </form>
+    </section>
+    <%-include('./partials/footer.ejs') %>
+</body>
+</html>

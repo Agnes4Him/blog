@@ -1,0 +1,23 @@
+<%-include('./partials/head.ejs') %>
+<body>
+    <%-include('./partials/nav.ejs') %>
+   <section>
+       <div class="home-section outer-container">
+           <h2>All Blogs</h2>
+           <% if(blogs.length > 0) { %>
+            <% blogs.forEach(blog => { %>
+                <div class="learning">
+                    <a href="/blogs/<%=blog._id %>">
+                        <h3><%=blog.title %></h3>
+                        <p><%=blog.snippet %></p>
+                    </a>
+                </div>
+            <% }) %>
+           <% } else { %>
+            <p>There are no blogs to display</p>
+        <% } %>
+       </div>
+   </section>
+   <%-include('./partials/footer.ejs') %>
+</body>
+</html>
