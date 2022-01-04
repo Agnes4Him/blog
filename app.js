@@ -21,9 +21,10 @@ mongoose.connect(dbUrl, {useNewUrlParser:true, useUnifiedTopology:true})
     console.log(err)
 })
 
-app.use(express.urlencoded({extended:true}))
-
 app.set('view engine', 'ejs')
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.get('/', (req, res) => {
     
@@ -35,15 +36,9 @@ app.get('/about', (req, res) => {
     res.render('about', {title:'About'})
 })
 
-app.delete('/blogs/:id', (req, res) => {
-    const id = req.params.id
-    Blog.findByIdAndDelete(id)
-    .then((result) => {
-        res.json({redirect:'/blogs'})
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+app.get('/blogs/create', (req, res) => {
+
+    res.render('create', {title:'Create Blogs'})
 })
 
 app.get('/blogs', (req, res) => {
@@ -51,11 +46,6 @@ app.get('/blogs', (req, res) => {
     .then((result) => {
         res.render('index', {title:'All blogs', blogs:result})
     })
-})
-
-app.get('/blogs/create', (req, res) => {
-
-    res.render('create', {title:'Create Blogs'})
 })
 
 app.post('/blogs', (req, res)=> {
@@ -77,6 +67,17 @@ app.get('/blogs/:id', (req, res) => {
     .then((result) => {
     
      res.render('details', {title:'Blog Details', blog:result})
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+})
+
+app.delete('/blogs/:id', (req, res) => {
+    const id = req.params.id
+    Blog.findByIdAndDelete(id)
+    .then((result) => {
+        res.json({redirect:'/blogs'})
     })
     .catch((err) => {
         console.log(err)

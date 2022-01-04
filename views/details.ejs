@@ -19,11 +19,10 @@
                 
             })
             .then((response) => {
-                response.json()
+                return response.json()
             })
             .then((data) => {
-                console.log(data)
-                //window.location.href(data.redirect)
+                window.location.assign(data.redirect)
             })
             .catch((err) => {
                 console.log(err)
