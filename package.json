@@ -24,6 +24,7 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "engines": {
-    "node": "16.13.0"
+    "node": "16.13.0",
+    "npm": "8.1.0"
   }
 }
