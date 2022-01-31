@@ -10,17 +10,6 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const dbUrl = process.env.CONNECT_KEY
 
-mongoose.connect(dbUrl, {useNewUrlParser:true, useUnifiedTopology:true})
-.then((result) => {
-    app.listen(PORT, () => {
-        console.log(`Listening on port ${PORT}`)
-    })
-    
-})
-.catch((err) => {
-    console.log(err)
-})
-
 app.set('view engine', 'ejs')
 
 app.use(express.json())
@@ -87,4 +76,15 @@ app.delete('/blogs/:id', (req, res) => {
 app.use((req, res) => {
 
     res.status(404).render('404', {title:'404'})
+})
+
+mongoose.connect(dbUrl, {useNewUrlParser:true, useUnifiedTopology:true})
+.then((result) => {
+    app.listen(PORT, () => {
+        console.log(`Listening on port ${PORT}`)
+    })
+    
+})
+.catch((err) => {
+    console.log(err)
 })
