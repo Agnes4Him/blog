@@ -2,10 +2,12 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "blog app",
-  "type": "module",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node app.js"
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "clean": "del -rf build && mkdir build"
   },
   "keywords": [
     "blog"
@@ -21,7 +23,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-loader": "^8.2.3",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1"
   },

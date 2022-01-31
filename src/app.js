@@ -1,7 +1,7 @@
 import express from 'express'
 import ejs from 'ejs'
 import mongoose from 'mongoose'
-import Blog from '/models/blogs'
+import Blog from './models/blogs'
 import dotenv from 'dotenv'
 
 dotenv.config()
