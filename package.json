@@ -4,7 +4,7 @@
   "description": "blog app",
   "main": "app.js",
   "scripts": {
-    "start": "npx nodemon --exec npx babel-node ./app.js"
+    "start": "node /app.js"
   },
   "keywords": [
     "blog"
