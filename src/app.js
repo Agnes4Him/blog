@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import ejs from 'ejs'
 import mongoose from 'mongoose'
 import Blog from './models/blogs'
@@ -10,7 +11,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const dbUrl = process.env.CONNECT_KEY
 
-app.set('views', __dirname, 'src', 'views');
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs')
 
 app.use(express.json())
