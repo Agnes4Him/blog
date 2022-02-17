@@ -1,9 +1,8 @@
-import express from 'express'
-import path from 'path'
-import ejs from 'ejs'
-import mongoose from 'mongoose'
-import Blog from './models/blogs'
-import dotenv from 'dotenv'
+const express = require('express')
+const ejs = require('ejs')
+const mongoose = require('mongoose')
+const dotenv = require('dotenv')
+const Blog = require('./models/blogs.js')
 
 dotenv.config()
 
@@ -11,7 +10,6 @@ const app = express()
 const PORT = process.env.PORT || 5000
 const dbUrl = process.env.CONNECT_KEY
 
-app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'ejs')
 
 app.use(express.json())
