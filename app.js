@@ -3,6 +3,7 @@ const ejs = require('ejs')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const Blog = require('./models/blogs.js')
+const path = require('path')
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000
 const dbUrl = process.env.CONNECT_KEY
 
 app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
