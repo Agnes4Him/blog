@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5000
 const dbUrl = process.env.CONNECT_KEY
 
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'));
+//app.set('views', './views');
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -27,17 +27,19 @@ app.get('/about', (req, res) => {
     res.render('about', {title:'About'})
 })
 
-app.get('/blogs/create', (req, res) => {
-
-    res.render('create', {title:'Create Blogs'})
-})
-
 app.get('/blogs', (req, res) => {
     Blog.find().sort({createdAt:-1})
     .then((result) => {
         res.render('index', {title:'All blogs', blogs:result})
     })
 })
+
+app.get('/blogs/create', (req, res) => {
+
+    res.render('create', {title:'Create Blogs'})
+})
+
+// This block is for GET /blogs request.
 
 app.post('/blogs', (req, res)=> {
     const blog = new Blog(req.body)
